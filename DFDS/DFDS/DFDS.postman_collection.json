@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "bd473ff3-9036-4395-ba60-fdb0da7b6110",
+		"name": "DFDS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetCountry",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/countries/45.755513/4.841641/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"countries",
+						"45.755513",
+						"4.841641",
+						""
+					]
+				},
+				"description": "Gets a country by latitude and longitude"
+			},
+			"response": []
+		},
+		{
+			"name": "GetTruckPlanDistance",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/truckplans/1234/distance",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"truckplans",
+						"1234",
+						"distance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDistanceBySearchParams",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/api/distance/germany/50/2018/02",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"api",
+						"distance",
+						"germany",
+						"50",
+						"2018",
+						"02"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
