@@ -1,11 +1,7 @@
 ﻿using DFDS.Interfaces;
 using DFDS.Models.OpenCage;
 using RestSharp;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 
 namespace DFDS.DataAccess
 {
@@ -27,6 +23,7 @@ namespace DFDS.DataAccess
         private RestRequest GetRequest()
         {
             var request = new RestRequest();
+            //Assuming configuration values/api keys etc are in a secure place
             var apiKey = ConfigurationManager.AppSettings["OpenCageApiKey"];
             request.AddQueryParameter("key", apiKey);
             return request;
@@ -34,7 +31,6 @@ namespace DFDS.DataAccess
 
         private RestClient GetClient()
         {
-            //Assuming these configuration values are in a secure place
             var url = ConfigurationManager.AppSettings["OpenCageApiUrl"];
             var client = new RestClient(url);
             return client;

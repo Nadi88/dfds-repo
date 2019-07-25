@@ -300,7 +300,7 @@
     <Compile Include="Models\Coordinate.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\OpenCage\ReverseGeoCodingResponse.cs" />
-    <Compile Include="Models\SearchParams.cs" />
+    <Compile Include="Models\DistanceSearchParams.cs" />
     <Compile Include="Models\TruckPlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -12,10 +12,9 @@ namespace DFDS.Controllers
         {
             try
             {
-
                 if (latitude == 0 || longitude == 0)
                 {
-                    return BadRequest();
+                    return BadRequest($"Invalid latitude and longitude {latitude}, {longitude}");
                 }
 
                 var dalHelper = new DataAccessHelper();

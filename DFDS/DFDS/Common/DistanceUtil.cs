@@ -16,23 +16,34 @@ namespace DFDS.Common
         /// <returns>The total distance in meters</returns>
         public static double GetTotalDistance(List<Coordinate> route)
         {
-            if(route == null)
+            if(route == null || route.Count < 2)
             {
-                return 0;
+                throw new ArgumentException("List of coordinates must have at least two values");
             }
 
             double sum = 0;
 
             for(int i = 0; i < route.Count - 1; i++)
             {
-                var from = route[i];
-                var to = route[i+1];
-                var distance = GetDistance(from, to);
-                sum += distance;
+                try
+                {
+                    var from = route[i];
+                    var to = route[i + 1];
+                    var distance = GetDistance(from, to);
+                    sum += distance;
+                }
+                catch (Exception)
+                {
+                    //Some of the coordinates might contain bad data
+                    //Log exception
+                    //Continue with the rest of the coordinates so we get an approx. distance
+                }
+    
             }
 
             return sum;
         }
+
 
         /// <summary>
         /// Gets the distance between two coordinates

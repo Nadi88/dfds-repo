@@ -16,7 +16,7 @@ namespace DFDS.Controllers
             {
                 if(id == 0)
                 {
-                    return BadRequest($"Invalid id {id}");
+                    return BadRequest($"Invalid id: {id}");
                 }
 
                 var dataAccess = new DataAccessHelper();
@@ -28,6 +28,11 @@ namespace DFDS.Controllers
 
                 return Ok(totalDistanceMeters);
             }
+            catch (ArgumentException e)
+            {
+                //Log exception
+                return BadRequest(e.Message);
+            }
             catch (Exception)
             {
                 //Log exception
@@ -36,30 +41,28 @@ namespace DFDS.Controllers
 
         }
 
-        //Implement functionality for answering the following question: 
-        //    "How many kilometers did drivers over the age of 50 drive in Germany in February 2018?" 
-
-        [Route("api/distance")]
+        [Route("api/distance/{country}/{minAge}/{year}/{month}")]
         [HttpGet]
-        public IHttpActionResult GetDistance(int? minAge, string country, DateTime? date)
+        public IHttpActionResult GetDistance(string country, int? minAge, int? year, int? month)
         {
             try
             {
                 var dataAccess = new DataAccessHelper();
                 var searchDal = dataAccess.GetSearchDal();
 
-                var searchParams = new SearchParams
+                var searchParams = new DistanceSearchParams
                 {
                     MinAge = minAge,
                     Country = country,
-                    DateTime = date
+                    Year = year,
+                    Month = month
                 };
 
                 var result = searchDal.GetDistanceByParams(searchParams);
 
                 return Ok(result);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //Log exception
                 return InternalServerError();

@@ -34,5 +34,6 @@ namespace DFDS.DataAccess
 
             return truckPlan;
         }
+
     }
 }
