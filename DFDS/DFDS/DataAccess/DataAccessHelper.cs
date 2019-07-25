@@ -1,8 +1,4 @@
 ﻿using DFDS.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace DFDS.DataAccess
 {
